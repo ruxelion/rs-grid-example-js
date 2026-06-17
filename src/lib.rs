@@ -4,7 +4,9 @@
 //! surrounding HTML chrome — this crate only mounts the grid on a
 //! `<canvas>` element supplied by the caller.
 
-use example_common::build_model;
+use std::rc::Rc;
+
+use example_common::{build_model, class_map::resolve_classes};
 use rs_grid_core::state::GridState;
 use rs_grid_web::{theme_from_css_vars, GridCanvas, Locale};
 use wasm_bindgen::prelude::*;
@@ -38,6 +40,7 @@ impl JsGrid {
         let state = GridState::new(model, css_w, css_h);
 
         let gc = GridCanvas::mount(canvas, state, theme, Locale::default());
+        gc.set_class_resolver(Rc::new(resolve_classes));
         gc.render();
 
         JsGrid { inner: gc }
