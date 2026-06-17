@@ -5,7 +5,7 @@ Standalone example of [rs-grid](https://github.com/ruxelion/rs-grid) in
 a `JsGrid` class; the host page owns the surrounding HTML and supplies a
 `<canvas>` element.
 
-This example pins the library at a released tag (`v0.1.0`) via a git
+This example pins the library at a released tag (`rs-grid-core-v0.1.3`) via a git
 dependency — see [`Cargo.toml`](Cargo.toml).
 
 ## Prerequisites
