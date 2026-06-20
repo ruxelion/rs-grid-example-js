@@ -40,6 +40,7 @@ dependencies = [
 [[package]]
 name = "example-common"
 version = "0.1.0"
+source = "git+https://github.com/ruxelion/rs-grid?tag=rs-grid-web-v0.1.4#f51cf52e13f4c927e79007624f9e792a83d8743f"
 dependencies = [
  "rs-grid-core",
  "rs-grid-icons",
@@ -128,14 +129,17 @@ dependencies = [
 [[package]]
 name = "rs-grid-core"
 version = "0.1.3"
+source = "git+https://github.com/ruxelion/rs-grid?tag=rs-grid-web-v0.1.4#f51cf52e13f4c927e79007624f9e792a83d8743f"
 
 [[package]]
 name = "rs-grid-icons"
 version = "0.1.2"
+source = "git+https://github.com/ruxelion/rs-grid?tag=rs-grid-web-v0.1.4#f51cf52e13f4c927e79007624f9e792a83d8743f"
 
 [[package]]
 name = "rs-grid-render-canvas"
 version = "0.1.3"
+source = "git+https://github.com/ruxelion/rs-grid?tag=rs-grid-web-v0.1.4#f51cf52e13f4c927e79007624f9e792a83d8743f"
 dependencies = [
  "js-sys",
  "rs-grid-scene",
@@ -146,13 +150,15 @@ dependencies = [
 [[package]]
 name = "rs-grid-scene"
 version = "0.1.3"
+source = "git+https://github.com/ruxelion/rs-grid?tag=rs-grid-web-v0.1.4#f51cf52e13f4c927e79007624f9e792a83d8743f"
 dependencies = [
  "rs-grid-core",
 ]
 
 [[package]]
 name = "rs-grid-web"
-version = "0.1.3"
+version = "0.1.4"
+source = "git+https://github.com/ruxelion/rs-grid?tag=rs-grid-web-v0.1.4#f51cf52e13f4c927e79007624f9e792a83d8743f"
 dependencies = [
  "console_error_panic_hook",
  "js-sys",
