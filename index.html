@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rs-grid — JS (library mode)</title>
+    <link rel="stylesheet" href="themes/base.css" />
+    <link rel="stylesheet" href="themes/light.css" />
+    <link rel="stylesheet" href="themes/dark.css" />
+    <link rel="stylesheet" href="themes/dark-shell.css" />
+    <link rel="stylesheet" href="themes/dimmed.css" />
+    <link rel="stylesheet" href="themes/dimmed-shell.css" />
+  </head>
+  <body>
+    <main class="app-layout">
+      <div class="app-page-header">
+        <h1 class="app-title">rs-grid basic example</h1>
+        <p class="app-subtitle">
+          Use the <strong class="app-highlight" id="rows-label">1 000 rows</strong>
+          × <strong class="app-highlight" id="cols-label">20 columns</strong>
+          virtual dataset below to test windowed rendering.
+        </p>
+        <div class="app-controls">
+          <!-- Dataset size -->
+          <div class="app-control">
+            <span class="app-control-label">Dataset size</span>
+            <select class="app-control-select" id="dataset-size">
+              <option value="1000">1 000 rows</option>
+              <option value="100000">100 000 rows</option>
+              <option value="1000000">1 million rows</option>
+              <option value="100000000">100 million rows</option>
+              <option value="1000000000">1 billion rows</option>
+              <option value="1000000000000">1 trillion rows</option>
+              <option value="1000000000000000">1 quadrillion rows</option>
+            </select>
+          </div>
+
+          <!-- Column count -->
+          <div class="app-control">
+            <span class="app-control-label">Column count</span>
+            <select class="app-control-select" id="column-count">
+              <option value="20">20 columns</option>
+              <option value="100">100 columns</option>
+              <option value="1000">1 000 columns</option>
+            </select>
+          </div>
+
+          <!-- Theme -->
+          <div class="app-control">
+            <span class="app-control-label">Theme</span>
+            <select class="app-control-select" id="theme">
+              <option value="">Light</option>
+              <option value="dark">Dark</option>
+              <option value="dimmed">Dimmed</option>
+            </select>
+          </div>
+
+          <!-- Language -->
+          <div class="app-control">
+            <span class="app-control-label">Language</span>
+            <select class="app-control-select" id="language">
+              <option value="en">English</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+              <option value="es">Español</option>
+              <option value="it">Italiano</option>
+              <option value="pt">Português</option>
+              <option value="nl">Nederlands</option>
+              <option value="pl">Polski</option>
+              <option value="tr">Türkçe</option>
+              <option value="ru">Русский</option>
+              <option value="uk">Українська</option>
+              <option value="ar">العربية</option>
+              <option value="ja">日本語</option>
+              <option value="zh">中文</option>
+              <option value="ko">한국어</option>
+            </select>
+          </div>
+
+          <!-- Editable toggle -->
+          <div class="app-control">
+            <span class="app-control-label">Editable</span>
+            <label class="app-switch">
+              <input type="checkbox" id="editable" checked />
+              <span class="app-switch-track"></span>
+            </label>
+          </div>
+
+          <!-- Selectable toggle -->
+          <div class="app-control">
+            <span class="app-control-label">Selectable</span>
+            <label class="app-switch">
+              <input type="checkbox" id="selectable" checked />
+              <span class="app-switch-track"></span>
+            </label>
+          </div>
+
+          <!-- Column reorder toggle -->
+          <div class="app-control">
+            <span class="app-control-label">Column reorder</span>
+            <label class="app-switch">
+              <input type="checkbox" id="column-reorder" checked />
+              <span class="app-switch-track"></span>
+            </label>
+          </div>
+
+          <!-- Reset persisted layout -->
+          <div class="app-control">
+            <span class="app-control-label">Layout</span>
+            <button class="app-control-button" id="reset-layout">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Validation error display -->
+      <div class="app-validation-error" id="validation-error" hidden></div>
+
+      <!-- Cell button click display -->
+      <div class="app-validation-error" id="button-action" hidden></div>
+
+      <!-- Body: grid canvas -->
+      <div class="app-body">
+        <div class="app-grid-wrapper">
+          <canvas
+            id="rs-grid-canvas"
+            style="width: 100%; height: 100%; display: block"
+          ></canvas>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
