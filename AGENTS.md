@@ -27,6 +27,16 @@ export_patches()               import_patches(tsv)         detach()
 Layout (widths / order / pinned count) persists to `localStorage` under
 `rs-grid-basic-layout`, shared with the framework demos.
 
+## Before coding
+
+<!-- keep in sync with the "Before coding" section in every other repo's AGENTS.md -->
+**Plan before coding non-trivial changes.** For a bug fix or feature that
+touches more than one file, changes a public API/component contract, or
+isn't an obvious one-liner, propose a short plan (approach, files touched,
+trade-offs) before writing code — use Claude Code's Plan Mode rather than
+diving straight into edits. Skip this for trivial fixes; planning every
+one-line change only adds friction.
+
 ## End-to-end tests (Playwright)
 
 A functional + visual-regression suite ([`e2e/`](e2e/)) drives the host page through the
