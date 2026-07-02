@@ -42,8 +42,12 @@ cd e2e && npm run update-snapshots # regenerate visual baselines
 
 ## Critical: this repo does NOT contain the library
 
-`rs-grid-*` and `example-common` are **git dependencies pinned to a tag** (currently
-`rs-grid-core-v0.1.3`, see [`Cargo.toml`](Cargo.toml)):
+<!-- keep in sync with rs-grid/AGENTS.md "How they relate" + the other 3
+     rs-grid-example-*/AGENTS.md "Critical" sections -->
+
+`rs-grid-*` and `example-common` are **git dependencies pinned to a tag** — see
+the `tag =` value in [`Cargo.toml`](Cargo.toml) for the current pin (do not
+hardcode a version/tag name in prose here, it goes stale):
 
 - The library source is in the separate `rs-grid` repo. Editing files here changes only
   the `JsGrid` wrapper / host page — never grid behaviour.
@@ -51,17 +55,23 @@ cd e2e && npm run update-snapshots # regenerate visual baselines
   (`example-common` must match the library it was built against).
 - To adopt a new library version: bump the tag on all deps together, then `cargo update`.
 
-> **Temporary (pre-release dev):** `Cargo.toml` carries a `[patch."…/rs-grid"]` block
-> pointing the `rs-grid-*` deps at a local working tree so the demo can build against
-> unreleased API (`example_common::layout`, `rs_grid_web::storage`). Remove it and bump
-> the `tag` once the new rs-grid version ships. `js-sys` was added as a dependency for the
-> JS callback bridges (`set_on_*`).
+> **Temporary (pre-release dev) pattern:** if `Cargo.toml` carries a
+> `[patch."…/rs-grid"]` block, it points the `rs-grid-*` deps at a local working
+> tree so the demo can build against unreleased API before a version ships.
+> Remove it and bump the `tag` once the new rs-grid version ships. (No patch
+> block is active right now — check `Cargo.toml` before assuming one exists.)
+> `js-sys` was added as a dependency for the JS callback bridges (`set_on_*`).
 
 ## Conventions
 
 - `pkg/` is wasm-pack output — never hand-edit.
 - `themes/` is **vendored** from the rs-grid reference theme — re-vendor rather than hand-edit.
-- Rust files are auto-formatted on save (PostToolUse `rustfmt` hook). No clippy hook: this
-  is a `cdylib` + `wasm-bindgen` crate, so host-target clippy does not apply.
+- Rust files are auto-formatted on save (PostToolUse `rustfmt` hook, then a blocking
+  `cargo check --target wasm32-unknown-unknown`). No clippy hook: this is a `cdylib` +
+  `wasm-bindgen` crate, so host-target clippy does not apply.
+- Formatting uses stable `rustfmt` defaults (no `rustfmt.toml` here, unlike `rs-grid`'s
+  nightly-only config) — intentional, so this demo never requires a nightly toolchain.
+- No `unwrap()` in production code — use `expect("reason")` or error propagation.
+- English (US) only in code, comments, and strings.
 - In `e2e/`, `node_modules/` and `test-results/` are gitignored; `tests/snapshots/` (visual
   baselines) are committed.
